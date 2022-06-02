@@ -24,7 +24,7 @@ if (!process.env.WALLET_ADDRESS || process.env.WALLET_ADDRESS === "") {
   }
 
 // RPC URL - we use the Alchemy API URL from the .env file
-const provider = new ethers.providers.JsonRpcProvuder(process.env.ALCHEMY_API_URL);
+const provider = new ethers.providers.JsonRpcProvider(process.env.ALCHEMY_API_URL);
 // Wallet private key - keep linked to .env, don't update to git or share
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 // sdk - initializing third web sdk - using wallet which passes private key and alchemy api 
