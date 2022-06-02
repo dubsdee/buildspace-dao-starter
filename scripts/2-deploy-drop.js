@@ -10,7 +10,7 @@ import { readFileSync } from "fs";
             // give a description for the collection
             description: "A DAO for gym and fitness enthusiasts.",
             // link the image that will be held on our NFT
-            image: readFileSync("scripts/assets/45plate.jpg"),
+            image: readFileSync("assets/45plate.jpg"),
             // we need to pass the address of the person who is getting the proceeds 
             // of sales of nfts in the contract.
             // We're not charging for the mint - all funds are getting sent to the 0x0 address
@@ -29,7 +29,7 @@ import { readFileSync } from "fs";
             editionDropAddress,
         );
         console.log("✅ editionDrop metadata:", metadata);
-    } catch (error) {
+    }   catch (error) {
         console.log("failed to deploy editionDrop contract", error);
     }
 })();
