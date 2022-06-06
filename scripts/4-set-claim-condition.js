@@ -1,5 +1,5 @@
 import sdk from "./1-initialize-sdk.js";
-import { MaxUnit256 } from "@ethersproject/constants";
+import { MaxUint256 } from "@ethersproject/constants";
 
 // accessing editionDrop contract
 const editionDrop = sdk.getEditionDrop("0xA3BBB310D49b1B25B92D2eBD8d06D171A2B04296");
@@ -19,7 +19,7 @@ const editionDrop = sdk.getEditionDrop("0xA3BBB310D49b1B25B92D2eBD8d06D171A2B042
             quantityLimitPerTransaction: 1,
             // set wait time between transactions to maxunit256
             // makes it so you can only claim once
-            waitInSeconds: MaxUnit256,
+            waitInSeconds: MaxUint256,
         }]
         // interacts with deployed contract on chain to adjust conditions
         // passes in 0 as that is the first token in the contract
