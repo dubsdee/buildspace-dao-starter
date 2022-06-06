@@ -9,8 +9,8 @@ const token = sdk.getToken("0xc43cf0577E53Ba0b1854bD0196388B1282fde02b");
         // what is the max token supply?
         const amount = 1000000;
         // interact to mint tokens
-        await Token.mintToSelf(amount);
-        const totalSupply = await Token.totalSuppy();
+        await token.mintToSelf(amount);
+        const totalSupply = await token.totalSupply();
 
         // print out how many of the tokens are issued
         console.log("There are now ", totalSupply.displayValue, "$CURLS in circulation.");
