@@ -8,6 +8,8 @@ const App = () => {
   const connectWithMetamask = useMetamask();
   console.log("Hi Address:", address);
   
+// governance contract - 0xFB1671979373D97255eD96eD9D290e9Bd230ddeB
+
   // initialize the editionDrop contract
   const editionDrop = useEditionDrop("0xA3BBB310D49b1B25B92D2eBD8d06D171A2B04296");
   // token contract
