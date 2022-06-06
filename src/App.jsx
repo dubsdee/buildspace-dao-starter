@@ -200,7 +200,7 @@ const App = () => {
   if (!address) {
     return (
       <div className = "landing">
-        <h1>🏋️‍♀️ Welcome to Swole DAO 🏋️‍♀️</h1>
+        <h1>🏋️‍♀️ Swole DAO 🏋️‍♀️</h1>
         <button onClick={connectWithMetamask} className="btn-hero">
           connect your wallet bro
         </button>
