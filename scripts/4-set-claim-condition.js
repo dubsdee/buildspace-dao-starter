@@ -12,7 +12,7 @@ const editionDrop = sdk.getEditionDrop("0xA3BBB310D49b1B25B92D2eBD8d06D171A2B042
             // when people will open to claim
             startTime: new Date(),
             // max NFTs to be claimed
-            maxQuantity: 1_000m
+            maxQuantity: 1_000,
             // price of the NFT
             price: 0,
             // amount to claim per transaction
