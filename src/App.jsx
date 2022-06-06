@@ -217,7 +217,7 @@ const App = () => {
         <p>Congrats bro 🤝 you made it in</p>
         <div>
           <div>
-            <h2>🪪 Gym Members</h2>
+            <h2>🪪 Wall of Fame</h2>
             <table className="card">
               <thead>
                 <tr>
@@ -238,7 +238,7 @@ const App = () => {
             </table>
           </div>
           <div>
-            <h2>📜 Gym Rules</h2>
+            <h2>📜 Gym Etiquette</h2>
             <form
               onSubmit={async (e) => {
                 e.preventDefault();
