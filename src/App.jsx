@@ -200,7 +200,7 @@ const App = () => {
   if (!address) {
     return (
       <div className = "landing">
-        <h1>🏋️‍♀️ Swole DAO 🏋️‍♀️</h1>
+        <h1>🏋️‍♀️ Swole DAO 🏋️</h1>
         <button onClick={connectWithMetamask} className="btn-hero">
           connect your wallet bro
         </button>
@@ -221,8 +221,8 @@ const App = () => {
             <table className="card">
               <thead>
                 <tr>
-                  <th>🏋️‍♀️ Address</th>
-                  <th>🏋️‍♀️ Token Amount</th>
+                  <th>🏋️‍♂️ Address</th>
+                  <th>🏋️ Token Amount</th>
                 </tr>
               </thead>
               <tbody>
