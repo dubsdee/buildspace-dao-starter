@@ -61,7 +61,7 @@ const App = () => {
       }
     };
     getAllBalances();
-  } [hasClaimedNFT, token.history]);
+  }, [hasClaimedNFT, token.history]);
 
   // now we combine the memberAddresses and memberTokenAmounts into a single array
   const memberList = useMemo(() => {
