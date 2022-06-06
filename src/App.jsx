@@ -1,6 +1,6 @@
 // Importing metamask functionality from thirdweb
-import { useAddress, useMetamask, useEditionDrop } from '@thirdweb-dev/react';
-import { useState, useEffect } from 'react';
+import { useAddress, useMetamask, useEditionDrop, useToken } from '@thirdweb-dev/react';
+import { useState, useEffect, useMemo } from 'react';
 
 const App = () => {
   // use the hooks that were imported via thirdweb
@@ -10,10 +10,72 @@ const App = () => {
   
   // initialize the editionDrop contract
   const editionDrop = useEditionDrop("0xA3BBB310D49b1B25B92D2eBD8d06D171A2B04296");
+  // token contract
+  const token = useToken("0xc43cf0577E53Ba0b1854bD0196388B1282fde02b")
   // state variable for us to know if user has the NFT
   const [hasClaimedNFT, setHasClaimedNFT ] = useState(false);
   // is claiming lets us keep a loading state while NFT is minting
   const [isClaiming, setIsClaiming] = useState(false);
+  // holds the amount of tokens each member has in state
+  const [memberTokenAmounts, setMemberTokenAmounts] = useState([]);
+  // the array holding all of the member addresses
+  const [memberAddresses, setMemberAddresses] = useState([]);
+
+  // function for wallet readability
+  const shortenAddress = (str) => {
+    return str.substring(0,6) + "..." + str.substring(str.length - 4);
+  };
+
+  // useEffect that grabs all members holding the NFT
+  useEffect(() => {
+    if (!hasClaimedNFT) {
+      return;
+    }
+
+    // like done in the airdrop file, grab the holders of tokenid 0
+    // calling this to get all addresses of members who hold a NFT from the ERC 1155
+    const getAllAddresses = async () => {
+      try {
+        const memberAddresses = await editionDrop.history.getAllClaimerAddresses(0);
+        setMemberAddresses(memberAddresses);
+        console.log("Members of the gym", memberAddresses);
+      } catch (error) {
+        console.error("failed to get member list", error);
+      }
+    };
+    getAllAddresses();
+  }, [hasClaimedNFT, editionDrop.history]);
+
+  // grabs the number of tokens each member holds (everyone on the ERC 20)
+  useEffect(() => {
+    if (!hasClaimedNFT) {
+      return;
+    }
+
+    const getAllBalances = async () => {
+      try {
+        const amounts = await token.history.getAllHolderBalances();
+        console.log("Amounts", amounts);
+      } catch (error) {
+        console.error("failed to get member balances", error);
+      }
+    };
+    getAllBalances();
+  } [hasClaimedNFT, token.history]);
+
+  // now we combine the memberAddresses and memberTokenAmounts into a single array
+  const memberList = useMemo(() => {
+    return memberAddresses.map((address) => {
+      // checking if we are finding the address in the memberTokenAmounts array
+      // if yes, return amounts of tokens the user has. Otherwise, 0
+      const member = memberTokenAmounts?.find(({ holder }) => holder === address);
+
+      return {
+        address,
+        tokenAmount: member?.balance.displayValue || "0",
+      }
+    });
+  }, [memberAddresses, memberTokenAmounts]);
 
   useEffect(() => {
     // if they don't have a connected wallet, exit
