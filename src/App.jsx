@@ -48,7 +48,7 @@ const App = () => {
       // mint the NFT to users wallet when they click the onclick button
       // passing 0 for the token id and 1 for the mint number
       await editionDrop.claim("0", 1);
-      console.log('Successfully minted! Check it out on OpenSea: https://testnest.opensea.io/assets/${editionDrop.getAddress()}/0');
+      console.log(`Successfully minted! Check it out on OpenSea: https://testnest.opensea.io/assets/${editionDrop.getAddress()}/0`);
       // stops the loading state and sets to true for successful mint
       setHasClaimedNFT(true);
     } catch(error) {
