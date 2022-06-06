@@ -12,7 +12,7 @@ const token = sdk.getToken("0xc43cf0577E53Ba0b1854bD0196388B1282fde02b");
         await token.roles.grant("minter", vote.getAddress());
 
         console.log(
-            "Successfully gave vote contract permissions to act on token contract"
+            "✅ Successfully gave vote contract permissions to act on token contract"
         );
     }   catch (error) {
         console.error(
@@ -38,7 +38,7 @@ const token = sdk.getToken("0xc43cf0577E53Ba0b1854bD0196388B1282fde02b");
             percent90
         );
 
-        console.log("Successfully transferred "+ percent90 + " tokens to vote contract.");
+        console.log("✅ Successfully transferred "+ percent90 + " tokens to vote contract.");
     }   catch (err) {
         console.error("failed to transfer tokens to vote contract", err);
     }

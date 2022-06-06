@@ -12,7 +12,7 @@ import sdk from "./1-initialize-sdk.js";
             // this will be in case we want to sell the token - we don'e so send to zero address
             primary_sale_recipient: AddressZero,
         });
-        console.log("Successfully deployed token module, address: ", tokenAddress,);
+        console.log("✅ Successfully deployed token module, address: ", tokenAddress,);
     }   catch (error) {
         console.error("failed to deploy token module", error);
     }

@@ -16,7 +16,7 @@ const editionDrop = sdk.getEditionDrop("0xA3BBB310D49b1B25B92D2eBD8d06D171A2B042
                 image: readFileSync("scripts/assets/membershipCard.png")
             },
         ]);
-        console.log("Successfully created a new NFT in the drop!");
+        console.log("✅ Successfully created a new NFT in the drop!");
     }   catch(error) {
         console.error("failed to create a new NFT", error);
     }

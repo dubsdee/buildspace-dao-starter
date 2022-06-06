@@ -28,7 +28,7 @@ import sdk from "./1-initialize-sdk.js";
         });
 
         console.log(
-            "Successfully deployed vote contract, address: ",
+            "✅ Successfully deployed vote contract, address: ",
             voteContractAddress,
         );
     }   catch (err) {

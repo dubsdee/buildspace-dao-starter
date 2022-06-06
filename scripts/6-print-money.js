@@ -10,7 +10,7 @@ const token = sdk.getToken("0xc43cf0577E53Ba0b1854bD0196388B1282fde02b");
         const amount = 1000000;
         // interact to mint tokens
         await token.mintToSelf(amount);
-        const totalSupply = await token.totalSupply();
+        const totalSupply = await token.totalSuppy();
 
         // print out how many of the tokens are issued
         console.log("There are now ", totalSupply.displayValue, "$CURLS in circulation.");

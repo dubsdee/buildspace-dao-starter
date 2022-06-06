@@ -25,7 +25,7 @@ const editionDrop = sdk.getEditionDrop("0xA3BBB310D49b1B25B92D2eBD8d06D171A2B042
         // passes in 0 as that is the first token in the contract
         // everyone will be minting the 0 tokenid 
         await editionDrop.claimConditions.set("0", claimConditions);
-        console.log("Successfully set claim condition.")
+        console.log("✅ Successfully set claim condition.")
     }   catch (error) {
         console.error("Failed to set claim condition", error);
     }
