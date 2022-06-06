@@ -10,6 +10,8 @@ import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 const activeChainId = ChainId.Rinkeby;
 
 // Wrap your app with the thirdweb provider
+// Holds user's authenticated wallet data (if connected before) and passes 
+// over to App
 ReactDOM.render(
   <React.StrictMode>
     <ThirdwebProvider desiredChainId={activeChainId}>

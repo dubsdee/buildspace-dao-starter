@@ -35,11 +35,11 @@ const sdk = new ThirdwebSDK(wallet);
     try {
         const address = await sdk.getSigner().getAddress();
         console.log("SDK initialized by address:", address)
-    } catch (err) {
+    }   catch (err) {
         console.error("Failed to get apps from the sdk", err);
         process.exit(1);
     }
-}) ();
+})();
 
 // exporting the initialized thirdweb SDK so it can be utilized in other scripts
 export default sdk;
