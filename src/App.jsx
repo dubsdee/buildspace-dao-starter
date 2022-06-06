@@ -1,11 +1,13 @@
 // Importing metamask functionality from thirdweb
-import { useAddress, useMetamask, useEditionDrop, useToken, useVote } from '@thirdweb-dev/react';
+import { useAddress, useMetamask, useEditionDrop, useToken, useVote, useNetwork } from '@thirdweb-dev/react';
 import { useState, useEffect, useMemo } from 'react';
 import { AddressZero } from "@ethersproject/constants";
+import { ChainId } from '@thirdweb-dev/sdk';
 
 const App = () => {
   // use the hooks that were imported via thirdweb
   const address = useAddress();
+  const network = useNetwork();
   const connectWithMetamask = useMetamask();
   console.log("Hi Address:", address);
   
@@ -181,13 +183,24 @@ const App = () => {
     }
   };
 
+  // check to make sure wallet is conneted to correct network
+  if (address && (network?.[0].data.chain.id !== ChainId.Rinkeby)) {
+    return (
+      <div className="unsupported-network">
+        <h2>Please connect to Rinkeby</h2>
+        <p>
+          This dapp is designed to work on Rinkeby, please swtich networks to continue.
+        </p>
+      </div>
+    );
+  }
 
   // if user hasn't connected their wallet to the app,
   // then you allow a connectWallet call
   if (!address) {
     return (
       <div className = "landing">
-        <h1>Welcome to SwoleDAO</h1>
+        <h1>🏋️‍♀️ Welcome to Swole DAO 🏋️‍♀️</h1>
         <button onClick={connectWithMetamask} className="btn-hero">
           connect your wallet bro
         </button>
@@ -200,16 +213,16 @@ const App = () => {
   if (hasClaimedNFT) {
     return (
       <div className="member-page">
-        <h1>SwoleDAO Member Page</h1>
-        <p>Congrats bro you made it</p>
+        <h1>Swole DAO Membership Zone</h1>
+        <p>Congrats bro 🤝 you made it in</p>
         <div>
           <div>
-            <h2>Member List</h2>
+            <h2>🪪 Gym Members</h2>
             <table className="card">
               <thead>
                 <tr>
-                  <th>Address</th>
-                  <th>Token Amount</th>
+                  <th>🏋️‍♀️ Address</th>
+                  <th>🏋️‍♀️ Token Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -225,7 +238,7 @@ const App = () => {
             </table>
           </div>
           <div>
-            <h2>Active Proposals</h2>
+            <h2>📜 Gym Rules</h2>
             <form
               onSubmit={async (e) => {
                 e.preventDefault();
@@ -357,7 +370,7 @@ const App = () => {
   // render mint nft screen
   return (
     <div className="mint-nft">
-      <h1>Mint your free SwoleDAO Membership NFT!</h1>
+      <h1>Get your free gym pass NFT! 🏋️‍♀️</h1>
       <button
       disabled={isClaiming}
       onClick={mintNft}
