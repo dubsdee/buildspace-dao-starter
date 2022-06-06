@@ -55,6 +55,7 @@ const App = () => {
     const getAllBalances = async () => {
       try {
         const amounts = await token.history.getAllHolderBalances();
+        setMemberTokenAmounts(amounts);
         console.log("Amounts", amounts);
       } catch (error) {
         console.error("failed to get member balances", error);
@@ -135,14 +136,40 @@ const App = () => {
     );
   }
   
+  // if user has already claimed NFT, want to display internal DAO page to them
+  // only dao members will see this, renders all of the members and token amounts
   if (hasClaimedNFT) {
     return (
-      <div className='member-page'>
+      <div className="member-page">
         <h1>SwoleDAO Member Page</h1>
-        <p>Congrats on being a member bro</p>
+        <p>Congrats bro you made it</p>
+        <div>
+          <div>
+            <h2>Member List</h2>
+            <table className="card">
+              <thead>
+                <tr>
+                  <th>Address</th>
+                  <th>Token Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {memberList.map((member) => {
+                  return (
+                    <tr key={member.address}>
+                      <td>{shortenAddress(member.address)}</td>
+                      <td>{member.tokenAmount}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   };
+
 
   // render mint nft screen
   return (
