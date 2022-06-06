@@ -213,7 +213,7 @@ const App = () => {
   if (hasClaimedNFT) {
     return (
       <div className="member-page">
-        <h1>Swole DAO Membership Zone</h1>
+        <h1>Members Only Room</h1>
         <p>Congrats bro 🤝 you made it in</p>
         <div>
           <div>
