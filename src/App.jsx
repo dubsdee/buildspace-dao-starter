@@ -128,7 +128,7 @@ const App = () => {
   if (!address) {
     return (
       <div className = "landing">
-        <h1>Welcome to SwoleDao</h1>
+        <h1>Welcome to SwoleDAO</h1>
         <button onClick={connectWithMetamask} className="btn-hero">
           connect your wallet bro
         </button>
